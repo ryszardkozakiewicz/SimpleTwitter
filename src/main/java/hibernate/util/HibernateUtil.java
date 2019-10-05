@@ -12,7 +12,7 @@ public class HibernateUtil {
 
     private static HibernateUtil instance;
 
-    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MyDatabase");
+    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myDatabase");
     private final EntityManager entityManager = entityManagerFactory.createEntityManager();
 
     public static HibernateUtil getInstance() {
