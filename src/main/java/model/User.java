@@ -1,7 +1,5 @@
 package model;
 
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +20,7 @@ public class User {
     private String name;
 
     @Column(name = "last_name")
-    private String lastnName;
+    private String lastName;
 
     @Column(name = "email")
     private String email;
@@ -66,12 +64,12 @@ public class User {
         this.name = name;
     }
 
-    public String getLastnName() {
-        return lastnName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastnName(String lastnName) {
-        this.lastnName = lastnName;
+    public void setLastName(String lastnName) {
+        this.lastName = lastnName;
     }
 
     public String getEmail() {
@@ -112,7 +110,7 @@ public class User {
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", name='" + name + '\'' +
-                ", lastnName='" + lastnName + '\'' +
+                ", lastnName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", follows=" + follows +
@@ -139,7 +137,7 @@ public class User {
         }
 
         public UserBuilder buildLastName(String lastName) {
-            user.setLastnName(lastName);
+            user.setLastName(lastName);
             return this;
         }
 
