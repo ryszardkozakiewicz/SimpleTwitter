@@ -2,7 +2,6 @@ package dao;
 
 import model.User;
 
-import javax.jws.soap.SOAPBinding;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -95,6 +94,11 @@ public class UserDAO extends AbstractDao {
 
     }
 
+    public List<User> getAllUsers(){
+
+        TypedQuery typedQuery = entityManager.createQuery("SELECT u FROM User u", User.class);
+        return typedQuery.getResultList();
+    }
 }
 
 
