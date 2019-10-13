@@ -4,6 +4,7 @@ import dao.UserDAO;
 import model.User;
 
 import javax.persistence.NoResultException;
+import java.util.Date;
 
 public class UserService {
 
@@ -26,6 +27,7 @@ public class UserService {
         } else if (isEmailExist(user.getEmail())) {
             return EMAIL_ERROR;
         }else {
+            user.setDateOfRegistration(new Date());
             userDAO.saveUser(user);
             return SUCCESS;
         }

@@ -1,5 +1,6 @@
 package controllers.servlets;
 
+import controllers.servlets.utils.ServletUtils;
 import dao.UserDAO;
 import model.User;
 import services.UserService;
@@ -17,7 +18,6 @@ public class RegisterServlet extends HttpServlet {
     private final String PASSWORD = "password";
     private final String REPETED_PASSWORD = "passwordRepeated";
     private final String EMAIL = "email";
-    private final String LOGIN = "login";
     private final String NAME = "username";
     private final String LASTNAME = "lastName";
 
@@ -37,7 +37,7 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String login = req.getParameter(LOGIN);
+        String login = req.getParameter(ServletUtils.LOGIN);
         String name = req.getParameter(NAME);
         String lastName = req.getParameter(LASTNAME);
         String email = req.getParameter(EMAIL);
