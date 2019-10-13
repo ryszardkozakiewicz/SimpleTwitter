@@ -17,8 +17,6 @@ public class LoginServlet extends HttpServlet {
 
     private final String PASSWORD = "password";
     private final String REMEMBER = "remember";
-    private final String LOGIN_COOKIE = "tweeter_login";
-    private final String PASSWORD_COOKIE = "tweeter_password";
     private final String CHECKBOX_SELECTED = "on";
     private final int SECONDS_IN_DAY = 60 * 60 * 24;
 
@@ -50,11 +48,11 @@ public class LoginServlet extends HttpServlet {
 
         if (null != req.getCookies()) {
             for (Cookie cookie : req.getCookies()) {
-                if (cookie.getName().equals(LOGIN_COOKIE)) {
+                if (cookie.getName().equals(ServletUtils.LOGIN_COOKIE)) {
                     login = cookie.getValue();
                     cookie.setMaxAge(SECONDS_IN_DAY);
                     resp.addCookie(cookie);
-                } else if (cookie.getName().equals(PASSWORD_COOKIE)) {
+                } else if (cookie.getName().equals(ServletUtils.PASSWORD_COOKIE)) {
                     password = cookie.getValue();
                     cookie.setMaxAge(SECONDS_IN_DAY);
                     resp.addCookie(cookie);
@@ -102,8 +100,8 @@ public class LoginServlet extends HttpServlet {
         if (userDAO.isUserValid(login, password)) {
             req.getSession().setAttribute(ServletUtils.LOGIN, login);
             if (null != remember && remember.equals(CHECKBOX_SELECTED)) {
-                Cookie loginCookie = new Cookie(LOGIN_COOKIE, login);
-                Cookie passwordCookie = new Cookie(PASSWORD_COOKIE, password);
+                Cookie loginCookie = new Cookie(ServletUtils.LOGIN_COOKIE, login);
+                Cookie passwordCookie = new Cookie(ServletUtils.PASSWORD_COOKIE, password);
                 loginCookie.setMaxAge(SECONDS_IN_DAY);
                 passwordCookie.setMaxAge(SECONDS_IN_DAY);
                 resp.addCookie(loginCookie);
