@@ -3,7 +3,6 @@ package controllers.servlets;
 import controllers.servlets.utils.ServletUtils;
 import dao.TweetDAO;
 import model.Tweet;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
