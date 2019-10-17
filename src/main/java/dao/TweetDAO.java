@@ -35,7 +35,6 @@ public class TweetDAO extends AbstractDao {
     }
 
     public List<Tweet> getFollowedTweet(String userLogin) {
-
         User currentUser = userDAO.getUserByLogin(userLogin);
         Set<User> followedUser = currentUser.getFollows();
         List<User> followedWithCurrent = new ArrayList<>(followedUser);
