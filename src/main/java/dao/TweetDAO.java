@@ -34,15 +34,15 @@ public class TweetDAO extends AbstractDao {
         }
     }
 
-    public List<Tweet> getFollowedTweet(String userLogin){
+    public List<Tweet> getFollowedTweet(String userLogin) {
 
         User currentUser = userDAO.getUserByLogin(userLogin);
-        Set<User> followedUser = currentUser.getFollowed();
-        List<User> folloedWithCurrent = new ArrayList<>(followedUser);
-        folloedWithCurrent.add(currentUser);
+        Set<User> followedUser = currentUser.getFollows();
+        List<User> followedWithCurrent = new ArrayList<>(followedUser);
+        followedWithCurrent.add(currentUser);
 
         Query query = entityManager.createQuery("SELECT t FROM Tweet t WHERE t.Author in :list");
-        query.setParameter("list",folloedWithCurrent );
+        query.setParameter("list", followedWithCurrent);
         return query.getResultList();
     }
 
